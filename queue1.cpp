@@ -1,0 +1,154 @@
+#include <iostream>            // queue (linear queue)
+using namespace std;
+int array[100];
+int front = -1;
+int rear = -1;
+bool isEmpty () {
+    if(front == -1 || front > rear) {
+        return true;
+    }
+    return false;
+}
+bool isFull () {
+    if(rear == 99) {
+        return true;
+    }
+    return false;
+}
+void enqueue (int value) {
+    if(isFull()) {
+        cout << "Queue overflow !" << "\n";
+        return;
+    }
+    if(front == -1) {
+        front = 0;
+    }
+    rear += 1;
+    array[rear] = value;
+    cout << "Value inserted : " << value <<"\n";
+}
+void dequeue () {
+    if(isEmpty()) {
+        cout << "Queue underflow !" << "\n";
+        return;
+    }
+    cout << "Value removed : " << array[front] << "\n";
+    front += 1;
+} 
+int getFront () {
+    if(isEmpty()) {
+        cout << "Queue is empty.\n";
+        return -1;
+    }
+    return array[front];
+}
+int getRear () {
+    if(isEmpty()) {
+        cout << "Queue is empty.\n";
+        return -1;
+    }
+    return array[rear];
+}
+void display () {
+    if(isEmpty()) {
+        cout << "Queue is empty.\n";
+        return;
+    }
+    cout << "Queue elements : ";
+    for(int i = front ; i<=rear ; i+=1){
+        cout << array[i] << " ";
+    }
+    cout << "\n";
+}
+int main () {
+    enqueue(100);
+    enqueue(200);
+    enqueue(300);
+    enqueue(400);
+    enqueue(500);
+    display();
+    dequeue();
+    dequeue();
+    dequeue();
+    dequeue();
+    display();
+    dequeue();
+    display();
+    dequeue();
+    return 0;
+}
+// #include <iostream>
+// using namespace std;
+// int arr[100];
+// int front = -1;
+// int rear = -1;
+// bool isEmpty () {
+//     if(front == -1 || front > rear) {
+//         return true;
+//     }
+//     return false;
+// }
+// bool isFull () {
+//     if(rear == 99) {
+//         return true ;
+//     }
+//     return false;
+// }
+// void enqueue (int value) {
+//     if(isFull()) {
+//         cout << "Queue overflow !" << "\n";
+//         return;
+//     }
+//     if(front == -1) {
+//         front = 0;
+//     }
+//     rear += 1;
+//     arr[rear] = value;
+//     cout << "Value inserted : " << value << "\n";
+// }
+// void dequeue () {
+//     if(isEmpty()) {
+//         cout << "Queue underflow !" << "\n";
+//         return ;
+//     }
+//     cout << "Value removed : " << arr[front] << "\n";
+//     front += 1 ;
+// }
+// int getFront () {
+//     if(isEmpty()) {
+//         cout << "Queue is empty.\n";
+//         return -1;
+//     }
+//     return arr[front];
+// }
+// int getRear () {
+//     if(isEmpty()) {
+//         cout << "Queue is empty.\n";
+//         return -1;
+//     }
+//     return arr[rear];
+// }
+// void display () {
+//     if(isEmpty()) {
+//         cout << "Queue is empty" << "\n";
+//         return;
+//     }
+//     cout << "Queue elements : \n";
+//     for(int i = front ; i <= rear ; i+=1){
+//         cout << arr[i] << " ";
+//     }
+//     cout << "\n";
+// }
+// int main () {
+//     enqueue(100);
+//     enqueue(200);
+//     enqueue(300);
+//     enqueue(400);
+//     enqueue(500);
+//     display();
+//     dequeue();
+//     dequeue();
+//     dequeue();
+//     display();
+//     return 0;
+// }
