@@ -1,0 +1,64 @@
+#include <iostream>         // stack 
+using namespace std;
+class Stack {
+    int *arr;
+    int top;
+    int size;
+    public:
+    Stack (int s) {      
+        if(s<=0) {
+            cout << "Invalid Size\n";
+            size=1;
+        }else{
+            size = s;
+        }
+        arr = new int[size];
+        top = -1;
+    }
+    ~Stack () {
+        delete[] arr;
+    }
+    void push (int x) {
+        if(top == size - 1) {
+            cout << "Stack OverFlow !\n";
+            return;
+        }
+        arr[++top] = x;
+    }
+    void pop () {
+        if(top == -1) {
+            cout << "Stack UnderFlow !\n";
+            return;
+        }
+        top--;
+    }
+    int peek () {
+        if(top == -1) {
+            cout << "Stack is empty.\n";
+            return -1;
+        }
+        return arr[top];
+    }
+    bool isEmpty () {
+        return top == -1;
+    }
+    bool isFull () {
+        return top == size - 1;
+    }
+    void display () {
+        if(top == -1) {
+            cout << "Stack is empty\n";
+            return;
+        }
+        for(int i = top ; i >= 0 ; i--){
+            cout << arr[i] << " ";
+        }
+        cout << "\n";
+    }
+    int currentSize () {
+        return top + 1;
+    }
+};
+int main () {
+    return 0;
+}
