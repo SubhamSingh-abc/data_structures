@@ -1,0 +1,51 @@
+#include <iostream>      // stack using vector
+#include <vector>
+using namespace std;
+class Stack {
+    vector<int>v;
+    public:
+    void push (int x) {
+        v.push_back(x);
+    }
+    void pop () {
+        if(v.empty()) {
+            cout << "Stack UnderFlow !\n";
+            return;
+        }
+        v.pop_back();
+    }
+    int peek () {
+        if(v.empty()) {
+            cout << "Stack UnderFlow !\n";
+            throw runtime_error("Stack Underflow!");
+        }
+        return v.back();
+    }
+    bool isEmpty () {
+        return v.empty();
+    }
+    void display () {
+        if(v.empty()){
+            cout << "Stack is Empty\n";
+            return;
+        }
+        for(int i = (int)v.size() - 1 ; i >= 0 ; i--){
+            cout << v[i] << " ";
+        }
+        cout << "\n";
+    }
+    void size () {
+        cout << "Size of vector array : " << v.size() << "\n";
+    }
+};
+int main () {
+    Stack s;
+    s.push(30);
+    s.push(20);
+    s.push(10);
+    s.display();
+    s.pop();
+    cout << "Top element : " << s.peek() << "\n";
+    s.display();
+    return 0;
+}
